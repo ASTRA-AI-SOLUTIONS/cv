@@ -1,35 +1,29 @@
 import { motion, AnimatePresence } from 'motion/react';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 export function Overlay() {
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
-  
-  interface Repo {
-    id: number;
-    name: string;
-    description: string;
-    html_url: string;
-    language: string;
-    stargazers_count: number;
-  }
-  
-  const [repos, setRepos] = useState<Repo[]>([]);
-  const [loadingRepos, setLoadingRepos] = useState(true);
 
-  useEffect(() => {
-    fetch('https://api.github.com/users/ASTRA-AI-SOLUTIONS/repos?sort=updated&per_page=6')
-      .then(res => res.json())
-      .then(data => {
-        if (Array.isArray(data)) {
-          setRepos(data);
-        }
-        setLoadingRepos(false);
-      })
-      .catch(err => {
-        console.error(err);
-        setLoadingRepos(false);
-      });
-  }, []);
+  const featuredProjects = [
+    {
+      title: "Mirage AI Detector",
+      url: "https://mirage12.vercel.app/",
+      description: "My most prestigious work. An accessibility application designed to protect users from AI-constructed deepfakes and media. Powered by our in-house AI model 'Mirage', trained on thousands of parameters to accurately detect if a video or image is AI-generated.",
+      tags: ["AI Model", "Accessibility", "Web App"]
+    },
+    {
+      title: "Indian Prenup",
+      url: "https://indianprenup.vercel.app",
+      description: "A financial risk assessment web application. It combines our proprietary Mirage model with a Gemini wrapper to analyze and calculate financial risks and implications in the event of a divorce.",
+      tags: ["Gemini AI", "Finance", "Web App"]
+    },
+    {
+      title: "Sneha Write",
+      url: "https://sneha-write.vercel.app",
+      description: "A dynamic library collection of poetry. It demonstrates live editing capabilities, allowing authorized users to update the website's content directly from the frontend using secure password access.",
+      tags: ["CMS", "Live Editing", "React"]
+    }
+  ];
 
   const experiences = [
     { 
@@ -85,7 +79,7 @@ export function Overlay() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 1, delay: 3.5 }}
+            transition={{ duration: 1, delay: 0.2 }}
             className="text-6xl md:text-8xl font-thin tracking-tight mb-6"
           >
             Ikshit <br/><span className="font-semibold text-blue-400">Joshi.</span>
@@ -94,7 +88,7 @@ export function Overlay() {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 1, delay: 3.8 }}
+            transition={{ duration: 1, delay: 0.5 }}
             className="text-xl md:text-2xl text-gray-400 font-light max-w-xl leading-relaxed"
           >
             Versatile Engineering graduate with a diverse background in technical sales, financial advisory, and digital media. Proven track record in independent content creation, leveraging advanced AI tools and LLMs.
@@ -165,7 +159,7 @@ export function Overlay() {
         </div>
       </section>
 
-      {/* Page 3.5: Open Source / GitHub */}
+      {/* Page 3.5: Featured Work */}
       <section className="min-h-screen flex items-center justify-center py-20 relative px-6 md:px-20">
         <div className="w-full max-w-6xl z-10">
           <motion.h2 
@@ -174,48 +168,46 @@ export function Overlay() {
             viewport={{ once: false }}
             className="text-4xl md:text-6xl font-light mb-16 tracking-tight"
           >
-            Open Source <span className="font-semibold text-cyan-400">Work</span>
+            Selected <span className="font-semibold text-cyan-400">Work</span>
           </motion.h2>
           
-          {loadingRepos ? (
-            <div className="text-gray-400 animate-pulse">Loading repositories from GitHub...</div>
-          ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {repos.map((repo, i) => (
-                <motion.a
-                  key={repo.id}
-                  href={repo.html_url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: false }}
-                  transition={{ delay: i * 0.1 }}
-                  className="group block p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-cyan-400/50 hover:bg-white/10 transition-all duration-300 relative overflow-hidden"
-                >
-                  <div className="absolute inset-0 bg-gradient-to-br from-cyan-400/0 to-cyan-400/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                  <div className="relative z-10">
-                    <div className="flex justify-between items-start mb-4">
-                      <h3 className="text-xl font-medium text-gray-200 group-hover:text-cyan-300 transition-colors line-clamp-1">{repo.name}</h3>
-                      <div className="flex items-center gap-1 text-gray-400 text-sm bg-black/30 px-2 py-1 rounded-md">
-                        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
-                        {repo.stargazers_count}
-                      </div>
-                    </div>
-                    <p className="text-gray-400 text-sm mb-6 line-clamp-2 min-h-[40px]">
-                      {repo.description || 'No description provided.'}
-                    </p>
-                    {repo.language && (
-                      <div className="flex items-center gap-2">
-                        <div className="w-2 h-2 rounded-full bg-cyan-400 shadow-[0_0_8px_rgba(34,211,238,0.8)]"></div>
-                        <span className="text-xs text-gray-500 font-mono uppercase tracking-wider">{repo.language}</span>
-                      </div>
-                    )}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {featuredProjects.map((project, i) => (
+              <motion.a
+                key={i}
+                href={project.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: false }}
+                transition={{ delay: i * 0.1 }}
+                className="group block p-8 rounded-2xl bg-white/5 border border-white/10 hover:border-cyan-400/50 hover:bg-white/10 transition-all duration-300 relative overflow-hidden flex flex-col h-full"
+              >
+                <div className="absolute inset-0 bg-gradient-to-br from-cyan-400/0 to-cyan-400/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                <div className="relative z-10 flex flex-col h-full">
+                  <div className="flex justify-between items-start mb-4">
+                    <h3 className="text-2xl font-medium text-gray-200 group-hover:text-cyan-300 transition-colors">{project.title}</h3>
+                    <svg className="w-5 h-5 text-gray-500 group-hover:text-cyan-400 transition-colors transform group-hover:translate-x-1 group-hover:-translate-y-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                    </svg>
                   </div>
-                </motion.a>
-              ))}
-            </div>
-          )}
+                  <p className="text-gray-400 text-sm mb-8 leading-relaxed flex-grow">
+                    {project.description}
+                  </p>
+                  
+                  <div className="flex flex-wrap gap-2 mt-auto">
+                    {project.tags.map((tag, j) => (
+                      <div key={j} className="flex items-center gap-1.5 bg-black/40 px-3 py-1.5 rounded-md border border-white/5">
+                        <div className="w-1.5 h-1.5 rounded-full bg-cyan-400 shadow-[0_0_8px_rgba(34,211,238,0.8)]"></div>
+                        <span className="text-xs text-gray-300 font-mono tracking-wide">{tag}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </motion.a>
+            ))}
+          </div>
         </div>
       </section>
 
