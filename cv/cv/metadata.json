@@ -1,0 +1,6 @@
+{
+  "name": "Eye of the Storm Portfolio",
+  "description": "A 3D interactive hurricane-themed portfolio using React Three Fiber.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
