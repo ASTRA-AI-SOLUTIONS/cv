@@ -3,13 +3,14 @@ import { useState } from 'react';
 
 export function Overlay() {
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
+  const [expandedEduIndex, setExpandedEduIndex] = useState<number | null>(null);
 
   const featuredProjects = [
     {
       title: "Mirage AI Detector",
       url: "https://mirage12.vercel.app/",
-      description: "My most prestigious work. An accessibility application designed to protect users from AI-constructed deepfakes and media. Powered by our in-house AI model 'Mirage', trained on thousands of parameters to accurately detect if a video or image is AI-generated.",
-      tags: ["AI Model", "Accessibility", "Web App"]
+      description: "An Android accessibility application designed to protect users from AI-constructed deepfakes and media (hosted as a web app for display). Powered by our in-house AI model 'Mirage', trained on thousands of parameters to accurately detect if a video or image is AI-generated.",
+      tags: ["AI Model", "Accessibility", "Android", "Web App"]
     },
     {
       title: "Indian Prenup",
@@ -25,7 +26,7 @@ export function Overlay() {
     }
   ];
 
-  const experiences = [
+  const education = [
     { 
       year: 'Recent', 
       role: 'Machine Learning Specialization', 
@@ -33,40 +34,98 @@ export function Overlay() {
       details: 'Completed comprehensive coursework in machine learning, covering supervised learning, unsupervised learning, and advanced algorithms. Gained practical experience in building and evaluating ML models.'
     },
     { 
+      year: '2018', 
+      role: 'B.Tech (ME, Robotics and Automation)', 
+      company: 'Lovely Professional University',
+      details: 'Relevant Subjects: Industrial Engineering, Manufacturing Processes, Operations Research, robotics and automation, supply chain management.'
+    }
+  ];
+
+  const experiences = [
+    { 
       year: '2022 – Present', 
       role: 'Independent Content Operations & Strategy', 
       company: 'Self-Employed (AdSense Monetized)',
-      details: 'Managed end-to-end digital production workflows and revenue generation. Utilized AI and Large Language Models (LLMs) to automate scripting and research tasks, reducing production time by 30%. Tracked performance metrics using Excel spreadsheets to forecast trends.'
+      description: 'Managed end-to-end digital production workflows and revenue generation.',
+      details: [
+        { title: 'Data Analytics & Excel', desc: 'Tracked performance metrics (traffic sources, CTR, revenue) using Excel spreadsheets to forecast trends and adjust content strategy.' },
+        { title: 'Process Optimization', desc: 'Utilized AI and Large Language Models (LLMs) to automate scripting and research tasks, reducing production time by 30%.' },
+        { title: 'Resource Management', desc: 'Managed scheduling, digital asset inventory, and publishing timelines to ensure zero downtime in content delivery.' }
+      ]
     },
     { 
-      year: '2020 – 2021', 
+      year: 'May 2020 – Oct 2021', 
       role: 'Sales and Service Engineer', 
       company: 'Ionex Chemical and Engineers',
-      details: 'Oversaw technical service delivery and client account management for industrial chemical solutions. Coordinated the delivery of technical services and products to industrial clients. Assessed client technical needs to ensure accurate product provisioning and inventory alignment.'
+      description: 'Oversaw technical service delivery and client account management for industrial chemical solutions.',
+      details: [
+        { title: 'Service Logistics', desc: 'Coordinated the delivery of technical services and products to industrial clients, ensuring on-time fulfillment of requirements.' },
+        { title: 'Inventory & Planning', desc: 'Assessed client technical needs to ensure accurate product provisioning and inventory alignment.' },
+        { title: 'Vendor & Client Relations', desc: 'Acted as the primary bridge between the engineering team and external clients, resolving operational bottlenecks quickly.' }
+      ]
     },
     { 
       year: '2018 – 2020', 
       role: 'Financial Advisor', 
       company: 'SBI Life Insurance',
-      details: 'Managed a portfolio of clients, focusing on financial planning and risk management. Analyzed client financial data to forecast future needs and recommend suitable long-term investment products. Built a sustainable client network through consistent follow-ups.'
+      description: 'Managed a portfolio of clients, focusing on financial planning and risk management.',
+      details: [
+        { title: 'Forecasting & Planning', desc: 'Analyzed client financial data to forecast future needs and recommend suitable long-term investment products.' },
+        { title: 'Relationship Management', desc: 'Built a sustainable client network through consistent follow-ups and effective communication of complex policy details.' },
+        { title: 'Performance Targets', desc: 'Consistently tracked and met sales performance metrics through disciplined pipeline management.' }
+      ]
     },
     { 
-      year: '2018', 
+      year: 'June 2018 – July 2018', 
       role: 'Manufacturing Intern', 
       company: 'Surya Roshni Limited',
-      details: 'Conducted time studies on assembly lines and suggested layout changes and procedural adjustments aimed at modifying and speeding up the overall manufacturing process. Assisted the quality assurance team in inspecting finished goods and raw materials.'
+      description: 'Worked in the lighting manufacturing division, focusing on production line performance and quality control.',
+      details: [
+        { title: 'Manufacturing Process Optimization', desc: 'Conducted time studies on assembly lines and suggested layout changes and procedural adjustments aimed at modifying and speeding up the overall manufacturing process.' },
+        { title: 'Quality Control', desc: 'Assisted the quality assurance team in inspecting finished goods and raw materials to maintain product standards.' },
+        { title: 'Troubleshooting', desc: 'Supported and followed technicians in identifying and resolving minor machine and process failures to minimize downtime.' }
+      ]
     },
     { 
-      year: '2017', 
+      year: 'May 2017 – June 2017', 
       role: 'Process Engineering Intern', 
       company: 'SRF Limited',
-      details: 'Assisted in analyzing existing production lines, identifying bottlenecks, and proposing minor modifications to the process flow to speed up the manufacturing process. Created and updated standard operating procedures (SOPs) for key process stages.'
+      description: 'Gained exposure to the manufacturing operations and process optimization in a large-scale plastic sheet manufacturing industry.',
+      details: [
+        { title: 'Process Modification & Efficiency', desc: 'Assisted in analyzing existing production lines, identifying bottlenecks, and proposing minor modifications to the process flow to speed up the manufacturing process.' },
+        { title: 'Documentation', desc: 'Created and updated standard operating procedures (SOPs) for key process stages, contributing to better workflow adherence.' },
+        { title: 'Safety Compliance', desc: 'Monitored equipment operation and assisted in ensuring adherence to industrial safety regulations.' }
+      ]
+    }
+  ];
+
+  const skillCategories = [
+    {
+      title: "Technical Skills",
+      skills: ["Python", "Machine Learning", "AI & LLM Workflow Integration", "Oracle"]
     },
-    { 
-      year: '2018', 
-      role: 'B.Tech Engineering', 
-      company: 'Lovely Professional University',
-      details: 'Relevant Subjects: Industrial Engineering, Manufacturing Processes, Operations Research, robotics and automation, supply chain management.'
+    {
+      title: "Soft Skills",
+      skills: ["Negotiation", "Critical Thinking", "Adaptability", "Cross-functional Communication"]
+    },
+    {
+      title: "Supply Chain & Operations",
+      skills: ["Process Improvement", "Inventory Management Basics", "Vendor Relations", "Logistics Coordination", "Demand Planning"]
+    },
+    {
+      title: "Languages",
+      skills: ["English (Fluent)", "Hindi (Fluent)", "Punjabi (Fluent)", "Haryanvi (Fluent)", "Kumaoni (Fluent)"]
+    }
+  ];
+
+  const examsCleared = [
+    {
+      name: "UPSC CDSE 2021",
+      desc: "Cleared written examination & SSB interview, validating strong leadership and officer potential."
+    },
+    {
+      name: "AFCAT",
+      desc: "Successfully cleared the Air Force Common Admission Test written examination."
     }
   ];
 
@@ -96,9 +155,9 @@ export function Overlay() {
         </div>
       </section>
 
-      {/* Page 2: Experience / Projects */}
+      {/* Page 2: Experience */}
       <section className="min-h-[100vh] w-full flex flex-col justify-center px-8 md:px-24 items-end text-right pt-20 pb-20">
-        <div className="max-w-2xl">
+        <div className="max-w-2xl w-full">
           <motion.h2 
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -121,7 +180,7 @@ export function Overlay() {
                 onClick={() => setExpandedIndex(expandedIndex === i ? null : i)}
               >
                 <div className="text-sm text-gray-500 mb-1 font-mono tracking-widest">{item.year}</div>
-                <h3 className="text-2xl md:text-3xl font-medium group-hover:text-blue-300 transition-colors duration-300">
+                <h3 className="text-2xl md:text-3xl font-medium group-hover:text-purple-300 transition-colors duration-300">
                   {item.role}
                 </h3>
                 <div className="text-lg text-gray-400 mt-1">{item.company}</div>
@@ -134,7 +193,65 @@ export function Overlay() {
                       transition={{ duration: 0.3 }}
                       className="overflow-hidden"
                     >
-                      <p className="text-gray-300 leading-relaxed text-left max-w-2xl ml-auto border-l-2 border-blue-400/30 pl-4">
+                      <div className="text-gray-300 leading-relaxed text-left max-w-2xl ml-auto border-l-2 border-purple-400/30 pl-4">
+                        <p className="mb-4 text-gray-200">{item.description}</p>
+                        <ul className="space-y-3">
+                          {item.details.map((detail, idx) => (
+                            <li key={idx}>
+                              <span className="font-semibold text-purple-300">{detail.title}: </span>
+                              <span className="text-gray-400">{detail.desc}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Page 3: Education */}
+      <section className="min-h-screen w-full flex flex-col justify-center px-8 md:px-24 pt-20 pb-20">
+        <div className="max-w-2xl">
+          <motion.h2 
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: false }}
+            transition={{ duration: 1 }}
+            className="text-4xl md:text-6xl font-light tracking-tight mb-12"
+          >
+            Education & <span className="font-semibold text-green-400">Certifications</span>
+          </motion.h2>
+          
+          <div className="space-y-8">
+            {education.map((item, i) => (
+              <motion.div 
+                key={i}
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: false }}
+                transition={{ duration: 0.5, delay: i * 0.1 }}
+                className="group cursor-pointer border-l-2 border-gray-800 pl-6"
+                onClick={() => setExpandedEduIndex(expandedEduIndex === i ? null : i)}
+              >
+                <div className="text-sm text-gray-500 mb-1 font-mono tracking-widest">{item.year}</div>
+                <h3 className="text-2xl md:text-3xl font-medium group-hover:text-green-300 transition-colors duration-300">
+                  {item.role}
+                </h3>
+                <div className="text-lg text-gray-400 mt-1">{item.company}</div>
+                <AnimatePresence>
+                  {expandedEduIndex === i && (
+                    <motion.div
+                      initial={{ opacity: 0, height: 0, marginTop: 0 }}
+                      animate={{ opacity: 1, height: 'auto', marginTop: 16 }}
+                      exit={{ opacity: 0, height: 0, marginTop: 0 }}
+                      transition={{ duration: 0.3 }}
+                      className="overflow-hidden"
+                    >
+                      <p className="text-gray-300 leading-relaxed max-w-xl">
                         {item.details}
                       </p>
                     </motion.div>
@@ -143,23 +260,48 @@ export function Overlay() {
               </motion.div>
             ))}
           </div>
-          
-          <motion.div 
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: false }}
-            transition={{ duration: 1, delay: 0.5 }}
-            className="mt-16 text-right"
-          >
-             <h4 className="text-xl font-medium text-gray-300 mb-4 tracking-wide uppercase">Core Skills</h4>
-             <p className="text-gray-500 leading-relaxed max-w-xl ml-auto">
-               AI & LLM Workflow Integration, Microsoft Excel, Oracle, Supply Chain & Operations, Logistics Coordination, Demand Planning, Process Improvement, Negotiation, Critical Thinking.
-             </p>
-          </motion.div>
         </div>
       </section>
 
-      {/* Page 3.5: Featured Work */}
+      {/* Page 4: Core Skills */}
+      <section className="min-h-[70vh] flex flex-col justify-center py-20 relative px-6 md:px-24">
+        <div className="w-full max-w-6xl mx-auto z-10">
+          <motion.h2 
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: false }}
+            className="text-4xl md:text-6xl font-light mb-16 tracking-tight"
+          >
+            Core <span className="font-semibold text-blue-400">Skills</span>
+          </motion.h2>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+            {skillCategories.map((category, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: false }}
+                transition={{ delay: i * 0.1 }}
+              >
+                <h3 className="text-2xl text-blue-300 mb-6 font-medium">{category.title}</h3>
+                <div className="flex flex-wrap gap-3">
+                  {category.skills.map((skill, j) => (
+                    <div
+                      key={j}
+                      className="px-4 py-2 rounded-full bg-white/5 border border-white/10 text-gray-300 hover:border-blue-400/50 hover:bg-blue-400/10 hover:text-blue-300 transition-all duration-300 text-sm"
+                    >
+                      {skill}
+                    </div>
+                  ))}
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Page 5: Featured Work */}
       <section className="min-h-screen flex items-center justify-center py-20 relative px-6 md:px-20">
         <div className="w-full max-w-6xl z-10">
           <motion.h2 
@@ -211,7 +353,22 @@ export function Overlay() {
         </div>
       </section>
 
-      {/* Page 3: Contact */}
+      {/* Page 6: Exams Cleared (Compact) */}
+      <section className="py-16 relative px-6 md:px-20 border-t border-white/5">
+        <div className="w-full max-w-4xl mx-auto z-10 text-center">
+          <h3 className="text-sm font-mono tracking-widest text-gray-500 uppercase mb-8">Competitive Exams Cleared</h3>
+          <div className="flex flex-col md:flex-row justify-center gap-8 md:gap-16">
+            {examsCleared.map((exam, i) => (
+              <div key={i} className="text-center max-w-xs mx-auto">
+                <h4 className="text-lg font-medium text-gray-300 mb-2">{exam.name}</h4>
+                <p className="text-sm text-gray-500 leading-relaxed">{exam.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Page 7: Contact */}
       <section className="min-h-[100vh] w-full flex flex-col justify-center px-8 md:px-24 items-center text-center pt-20 pb-20">
         <div className="max-w-3xl flex flex-col items-center">
           <motion.h2 
@@ -231,7 +388,7 @@ export function Overlay() {
             className="flex flex-col items-center gap-4 text-xl text-gray-400 font-light mb-12 max-w-xl"
           >
             <p>
-              Kashipur, Uttarakhand<br />
+              Delhi<br />
               +91-9760915613
             </p>
             <a 
@@ -247,16 +404,32 @@ export function Overlay() {
             </a>
           </motion.div>
           
-          <motion.a 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false }}
-            transition={{ duration: 1, delay: 0.4 }}
-            href="mailto:ikshitjoshi2@gmail.com"
-            className="inline-block px-12 py-4 border border-gray-600 hover:border-white hover:bg-white hover:text-black transition-all duration-500 tracking-widest text-sm uppercase"
-          >
-            Initiate Sequence
-          </motion.a>
+          <div className="flex flex-col sm:flex-row gap-6 mt-6">
+            <motion.a 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: false }}
+              transition={{ duration: 1, delay: 0.4 }}
+              href="mailto:ikshitjoshi2@gmail.com"
+              className="inline-block px-12 py-4 border border-gray-600 hover:border-white hover:bg-white hover:text-black transition-all duration-500 tracking-widest text-sm uppercase"
+            >
+              Send Email
+            </motion.a>
+            <motion.a 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: false }}
+              transition={{ duration: 1, delay: 0.5 }}
+              href="/Ikshit_Joshi_Resume.pdf"
+              download="Ikshit_Joshi_Resume.pdf"
+              className="inline-flex items-center justify-center gap-3 px-12 py-4 border border-blue-400/50 bg-blue-400/10 text-blue-300 hover:bg-blue-400 hover:text-black transition-all duration-500 tracking-widest text-sm uppercase"
+            >
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+              </svg>
+              Download Resume
+            </motion.a>
+          </div>
         </div>
       </section>
     </div>
