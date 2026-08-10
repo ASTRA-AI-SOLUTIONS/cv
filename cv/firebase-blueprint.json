@@ -1,0 +1,24 @@
+{
+  "entities": {
+    "Resume": {
+      "title": "Resume Data",
+      "description": "The dynamic resume content",
+      "type": "object",
+      "properties": {
+        "education": { "type": "array" },
+        "experiences": { "type": "array" },
+        "skillCategories": { "type": "array" },
+        "certifications": { "type": "array" },
+        "projects": { "type": "array" }
+      }
+    }
+  },
+  "firestore": {
+    "/resumes/main_resume": {
+      "schema": {
+        "$ref": "#/entities/Resume"
+      },
+      "description": "Main resume document"
+    }
+  }
+}

@@ -7,7 +7,7 @@ interface StormProps {
 }
 
 export function Storm({ scrollProgress }: StormProps) {
-  const count = 200000; // Extremely dense particle field for a premium, fluid look
+  const count = 30000; // Reduced for faster load time and better performance
   
   const [positions, offsets, colors] = useMemo(() => {
     const positions = new Float32Array(count * 3);
